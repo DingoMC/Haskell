@@ -8,9 +8,10 @@ pdelta a b c = let delta = (b ^ 2 - 4 * a * c) in
                  if delta == 0 then 0
                  else error "Nie da sie"
 mz a b c = if a == 0 then error "To nie jest funkcja kwadratowa!"
-                     else
-                     let delta = (b ^ 2 - 4 * a * c) in
-                         if delta < 0 then error "Nie da sie"
+                     else if delta < 0 then error "Nie da sie"
                                       else
-                                      if delta == 0 then -b/(2 * a)
-                                                    else [(-b - sqrt(delta))/(2 * a), (-b - sqrt(delta))/(2 * a)]
+                                      if delta == 0 then [x1]
+                                                    else [x1, x2]
+    where delta = (b ^ 2 - 4 * a * c)
+          x1 = (-b - sqrt(delta))/(2 * a)
+          x2 = (-b + sqrt(delta))/(2 * a)
